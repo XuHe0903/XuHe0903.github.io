@@ -77,9 +77,9 @@
     <link href="http://xuhe0903.xyz/2018/10/02/hello-world/"/>
     <id>http://xuhe0903.xyz/2018/10/02/hello-world/</id>
     <published>2018-10-02T02:56:29.788Z</published>
-    <updated>2018-10-02T03:40:05.861Z</updated>
+    <updated>2018-10-03T06:29:08.364Z</updated>
     
-    <content type="html"><![CDATA[<p>一个高中生的个人博客</p><h2 id="欢迎！"><a href="#欢迎！" class="headerlink" title="欢迎！"></a>欢迎！</h2><h3 id="第一篇文章"><a href="#第一篇文章" class="headerlink" title="第一篇文章"></a>第一篇文章</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hello world</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>一个高中生的个人博客</p><h2 id="欢迎！"><a href="#欢迎！" class="headerlink" title="欢迎！"></a>欢迎！</h2><h3 id="第一篇文章"><a href="#第一篇文章" class="headerlink" title="第一篇文章"></a>第一篇文章</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hello world</span><br></pre></td></tr></table></figure><h2 id="图片测试"><a href="#图片测试" class="headerlink" title="图片测试"></a>图片测试</h2><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fvv0ow2peyj31hc0u0dra.jpeg" alt="图片测试" title="">                </div>                <div class="image-caption">图片测试</div>            </figure>]]></content>
     
     <summary type="html">
     
