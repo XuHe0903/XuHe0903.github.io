@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xuhe0903.xyz/"/>
-  <updated>2018-10-03T09:09:35.665Z</updated>
+  <updated>2018-10-13T14:38:17.234Z</updated>
   <id>http://xuhe0903.xyz/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我今天运行了我的第一个iOS程序</title>
+    <link href="http://xuhe0903.xyz/2018/10/13/%E6%88%91%E4%BB%8A%E5%A4%A9%E8%BF%90%E8%A1%8C%E4%BA%86%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAiOS%E7%A8%8B%E5%BA%8F/"/>
+    <id>http://xuhe0903.xyz/2018/10/13/我今天运行了我的第一个iOS程序/</id>
+    <published>2018-10-13T14:32:25.000Z</published>
+    <updated>2018-10-13T14:38:17.234Z</updated>
+    
+    <content type="html"><![CDATA[<p>开发工具：Xcode 10<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fw6yysmvgyj30f50qsdiz.jpg" alt="iPhone X 运行效果（模拟器）" title="">                </div>                <div class="image-caption">iPhone X 运行效果（模拟器）</div>            </figure><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fw6z0pa18qj30fj0r9tc0.jpg" alt="iPhone 8 运行效果（模拟器）" title="">                </div>                <div class="image-caption">iPhone 8 运行效果（模拟器）</div>            </figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;开发工具：Xcode 10&lt;br&gt;&lt;figure class=&quot;image-bubble&quot;&gt;
+                &lt;div class=&quot;img-lightbox&quot;&gt;
+                    &lt;div class=&quot;overlay&quot;&gt;&lt;/div&gt;
+      
+    
+    </summary>
+    
+      <category term="原创" scheme="http://xuhe0903.xyz/categories/%E5%8E%9F%E5%88%9B/"/>
+    
+    
+      <category term="iOS" scheme="http://xuhe0903.xyz/tags/iOS/"/>
+    
+      <category term="编程" scheme="http://xuhe0903.xyz/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>迈克尔·杰克逊：你已离开了8年，我们无法停止怀念</title>
