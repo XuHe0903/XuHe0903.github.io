@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xuhe0903.xyz/"/>
-  <updated>2018-10-27T09:44:59.100Z</updated>
+  <updated>2018-11-03T07:48:03.287Z</updated>
   <id>http://xuhe0903.xyz/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Apple Watch省电小技巧</title>
+    <link href="http://xuhe0903.xyz/2018/11/03/Watch%E7%9C%81%E7%94%B5%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
+    <id>http://xuhe0903.xyz/2018/11/03/Watch省电小技巧/</id>
+    <published>2018-11-03T06:58:01.000Z</published>
+    <updated>2018-11-03T07:48:03.287Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由于我现在的旧款Apple Watch默认设置已经无法满足一天16小时的使用需求了，我觉得有必要研究一下，怎么设置才能在保证必须功能的前提下，尽可能延长它的续航。<br>我的表款：<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws4.sinaimg.cn/large/006tNbRwly1fwuwzdizy2j30ad0istao.jpg" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fwuwziaehsj30ku112q6k.jpg" alt="" title="">                </div>                <div class="image-caption"></div>            </figure></p><h1 id="推荐的设置"><a href="#推荐的设置" class="headerlink" title="推荐的设置"></a>推荐的设置</h1><p>使用画面简单，插件少的表盘，我最近测试的一些表盘中运动数据记录和模块两个表盘是最省电的<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws4.sinaimg.cn/large/006tNbRwly1fwuwe97onfj30ad0irju6.jpg" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws4.sinaimg.cn/large/006tNbRwly1fwuwefoscvj30ad0jd75w.jpg" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><br>卸载非必要的第三方软件<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwux0sfcnuj30ad0isdin.jpg" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><br>关闭后台应用刷新<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fwux1dpuynj30ku112dkt.jpg" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><br>在保证可视度的情况下，降低屏幕亮度<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwuwfgn0cwj30ad0ig41o.jpg" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><br>降低声音大小与触感强度<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwuwg7w2wbj30ad0igdjb.jpg" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwuwgi67hjj30ad0j9q7t.jpg" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><br>唤醒屏幕时仅显示在还在后台活跃的应用<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwuwhyc3x6j30ad0ismzl.jpg" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><br>减少轻点唤醒后的屏幕显示时间<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwuwil15hsj30ad0iswh0.jpg" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><br>关闭Hey Siri，对续航有非常大的帮助，此后可以通过长按数码表冠来唤醒Siri<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws4.sinaimg.cn/large/006tNbRwly1fwuwjj4dynj30ad0isdhx.jpg" alt="" title="">                </div>                <div class="image-caption"></div>            </figure></p><p>经过以上设置后，您的Apple Watch的续航将会得到很大的提升！<br>例如我，早上6:35从充电器上摘下，一直戴到晚上11点<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fwuwo145tkj30ku112dke.jpg" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws4.sinaimg.cn/large/006tNbRwly1fwuwo7a2xhj30ku112qv5.jpg" alt="" title="">                </div>                <div class="image-caption"></div>            </figure></p><h1 id="如果还不够省电…"><a href="#如果还不够省电…" class="headerlink" title="如果还不够省电…"></a>如果还不够省电…</h1><p>如果你只是想看时间，可以试试省电模式<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws4.sinaimg.cn/large/006tNbRwly1fwuwlukkf5j30fk0jgadi.jpg" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fwuwm4skblj30fk0jg78e.jpg" alt="" title="">                </div>                <div class="image-caption"></div>            </figure></p><p>使用的带壳截图软件：<a href="https://dwz.cn/t160reCS" target="_blank" rel="noopener">点我了解</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;由于我现在的旧款Apple Watch默认设置已经无法满足一天16小时的使用需求了，我觉得有必要研究一下，怎么设置才能在保证必须功能的前提下
+      
+    
+    </summary>
+    
+      <category term="原创" scheme="http://xuhe0903.xyz/categories/%E5%8E%9F%E5%88%9B/"/>
+    
+      <category term="IT" scheme="http://xuhe0903.xyz/categories/%E5%8E%9F%E5%88%9B/IT/"/>
+    
+      <category term="教程" scheme="http://xuhe0903.xyz/categories/%E5%8E%9F%E5%88%9B/IT/%E6%95%99%E7%A8%8B/"/>
+    
+    
+      <category term="分享" scheme="http://xuhe0903.xyz/tags/%E5%88%86%E4%BA%AB/"/>
+    
+      <category term="Apple Watch" scheme="http://xuhe0903.xyz/tags/Apple-Watch/"/>
+    
+      <category term="技巧" scheme="http://xuhe0903.xyz/tags/%E6%8A%80%E5%B7%A7/"/>
+    
+      <category term="教程" scheme="http://xuhe0903.xyz/tags/%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>那些不想跟风iPhone潮流的极简手机，为什么总能被人们关注？</title>
