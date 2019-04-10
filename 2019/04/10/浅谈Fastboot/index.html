@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>浅谈Fastboot | 徐赫的博客 | 一个高中生的空中楼阁</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#2196F3">
+    
+    
+    <meta name="keywords" content="Android,IT">
+    <meta name="description" content="欢迎各位来讨论，欢迎各位大神来纠错，给建议。客官觉得小的写的还行给个打赏呗 Fastboot是什么 首先，Fastboot是安卓刷机救砖的一种刷机模式。 Fastboot俗称 引导模式 比Recovery更底层的一种刷机模式。 多为厂商定制售后工具刷机用 底层开发人员调试用  Fastboot的用处 Fastboot可以刷入Recovery  Fastboot可以刷入系统  Fastboot可以救">
+<meta name="keywords" content="Android,IT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈Fastboot">
+<meta property="og:url" content="http://xuhe0903.xyz/2019/04/10/浅谈Fastboot/index.html">
+<meta property="og:site_name" content="徐赫的博客">
+<meta property="og:description" content="欢迎各位来讨论，欢迎各位大神来纠错，给建议。客官觉得小的写的还行给个打赏呗 Fastboot是什么 首先，Fastboot是安卓刷机救砖的一种刷机模式。 Fastboot俗称 引导模式 比Recovery更底层的一种刷机模式。 多为厂商定制售后工具刷机用 底层开发人员调试用  Fastboot的用处 Fastboot可以刷入Recovery  Fastboot可以刷入系统  Fastboot可以救">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-10T14:21:21.126Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅谈Fastboot">
+<meta name="twitter:description" content="欢迎各位来讨论，欢迎各位大神来纠错，给建议。客官觉得小的写的还行给个打赏呗 Fastboot是什么 首先，Fastboot是安卓刷机救砖的一种刷机模式。 Fastboot俗称 引导模式 比Recovery更底层的一种刷机模式。 多为厂商定制售后工具刷机用 底层开发人员调试用  Fastboot的用处 Fastboot可以刷入Recovery  Fastboot可以刷入系统  Fastboot可以救">
+    
+        <link rel="alternate" type="application/atom+xml" title="徐赫的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.jpg">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">徐赫</h5>
+          <a href="mailto:3081899312@qq.com" title="3081899312@qq.com" class="mail">3081899312@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/XuHe0903" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/6115152202" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info-circle"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">浅谈Fastboot</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">浅谈Fastboot</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-04-10T11:56:41.000Z" itemprop="datePublished" class="page-time">
+  2019-04-10
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/转载/">转载</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Fastboot是什么"><span class="post-toc-number">1.</span> <span class="post-toc-text">Fastboot是什么</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Fastboot的用处"><span class="post-toc-number">2.</span> <span class="post-toc-text">Fastboot的用处</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Fastboot的命令-仅供参考"><span class="post-toc-number">3.</span> <span class="post-toc-text">Fastboot的命令 (仅供参考)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#命令汇总"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">命令汇总</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#写入分区步骤以及命令"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">写入分区步骤以及命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#擦除分区命令"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">擦除分区命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一般线刷操作流程"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">一般线刷操作流程</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Fastboot-小秘密"><span class="post-toc-number">4.</span> <span class="post-toc-text">Fastboot 小秘密</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Fastboot总结"><span class="post-toc-number">5.</span> <span class="post-toc-text">Fastboot总结</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-浅谈Fastboot"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">浅谈Fastboot</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-04-10 19:56:41" datetime="2019-04-10T11:56:41.000Z"  itemprop="datePublished">2019-04-10</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/转载/">转载</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>欢迎各位来讨论，欢迎各位大神来纠错，给建议。客官觉得小的写的还行给个打赏呗</p>
+<h1 id="Fastboot是什么"><a href="#Fastboot是什么" class="headerlink" title="Fastboot是什么"></a>Fastboot是什么</h1><blockquote>
+<p>首先，Fastboot是安卓刷机救砖的一种刷机模式。</p>
+<p>Fastboot俗称 <strong>引导模式</strong></p>
+<p>比Recovery更底层的一种刷机模式。</p>
+<p>多为厂商定制售后工具刷机用</p>
+<p>底层开发人员调试用</p>
+</blockquote>
+<h1 id="Fastboot的用处"><a href="#Fastboot的用处" class="headerlink" title="Fastboot的用处"></a>Fastboot的用处</h1><ul>
+<li><p>Fastboot可以刷入Recovery</p>
+</li>
+<li><p>Fastboot可以刷入系统</p>
+</li>
+<li><p>Fastboot可以救砖</p>
+</li>
+<li><p>Fastboot可以使用Fastboot命令</p>
+<h1 id="Fastboot的命令-仅供参考"><a href="#Fastboot的命令-仅供参考" class="headerlink" title="Fastboot的命令 (仅供参考)"></a>Fastboot的命令 (仅供参考)</h1><h2 id="命令汇总"><a href="#命令汇总" class="headerlink" title="命令汇总"></a>命令汇总</h2></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">fastboot flash bootloader u-boot.bin</span><br><span class="line"></span><br><span class="line">fastboot flash kernel uImage</span><br><span class="line"></span><br><span class="line">fastboot flash system system.img</span><br><span class="line"></span><br><span class="line">fastboot flash userdata userdata.img</span><br><span class="line"></span><br><span class="line">fastboot flash ramdisk ramdisk-uboot.img</span><br><span class="line"></span><br><span class="line">fastboot erase cache</span><br><span class="line"></span><br><span class="line">fastboot flash &#123;partition&#125;</span><br></pre></td></tr></table></figure>
+<p>语法介绍：</p>
+<blockquote>
+<p>fastboot flash xxxx xxxx.img<br>{*.img}   例：fastboot flash boot boot.img</p>
+<p>fastboot flashall  </p>
+<p>注意：此命令会在当前目录中查找所有img文件，将这些img文件烧写到所有对应的分区中，并重新启动手机。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">一次烧写boot，system，recovery分区：</span><br><span class="line"></span><br><span class="line">创建包含boot.img，system.img，recovery.img文件的zip包。</span><br><span class="line"></span><br><span class="line">执行：fastboot update &#123;*.zip&#125;</span><br></pre></td></tr></table></figure>
+<p>比较少用到的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fastboot flash splash1 烧写开机第一屏</span><br><span class="line"></span><br><span class="line">fastboot reboot    不烧写flash情况下调试</span><br><span class="line"></span><br><span class="line">fastboot boot uImage 或者u-boot.bin  不烧写flash情况下调试</span><br><span class="line"></span><br><span class="line">fastboot getver:version    查看版本号</span><br></pre></td></tr></table></figure>
+<p>重启相关<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastboot reboot-bootloader   重启到到bootloader</span><br></pre></td></tr></table></figure></p>
+<p>清空分区相关<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">语法：</span><br><span class="line">fastboot erase &#123;partition&#125;   清空分区   例：fastboot erase boot</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fastboot erase boot   清除boot分区</span><br><span class="line"></span><br><span class="line">fastboot erase system   清除system分区</span><br><span class="line"></span><br><span class="line">fastboot erase data     清除data分区</span><br><span class="line"></span><br><span class="line">fastboot erase cache      清除cache分区</span><br><span class="line"></span><br><span class="line">上面的命令也可以简化成一条命令</span><br><span class="line"></span><br><span class="line">fastboot erase system -w  清除所有分区</span><br></pre></td></tr></table></figure></p>
+<p>获取基本信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">fastboot getvar version:version-bootloader:version-baseband:product:serialno:secure</span><br><span class="line">  获取客户端(手机端)变量信息7 获取客户端(手机端)变量信息</span><br><span class="line"></span><br><span class="line">version 客户端支持的fastboot协议版本</span><br><span class="line"></span><br><span class="line">version-bootloader  Bootloader的版本号</span><br><span class="line"></span><br><span class="line">version-baseband    基带版本</span><br><span class="line"></span><br><span class="line">product             产品名称</span><br><span class="line"></span><br><span class="line">serialno             产品序列号</span><br><span class="line"></span><br><span class="line">secure              返回yes 表示在刷入时需要获取签名(签名需要厂商签名)</span><br></pre></td></tr></table></figure></p>
+<h2 id="写入分区步骤以及命令"><a href="#写入分区步骤以及命令" class="headerlink" title="写入分区步骤以及命令"></a>写入分区步骤以及命令</h2><blockquote>
+<p>adb devices——查看手机是否连接上</p>
+<p>adb reboot bootloader——将手机重启到Fastboot模式</p>
+<p>fastboot devices——查看Fastboot模式下连接的手机</p>
+</blockquote>
+<ul>
+<li>几种分区写入如下：(例如：system.img刷入的分区电脑上具体的路径)</li>
+</ul>
+<blockquote>
+<p>fastboot flash system system.img</p>
+<p>fastboot flash boot boot.img</p>
+<p>fastboot flash radio radio.img</p>
+<p>…</p>
+</blockquote>
+<ul>
+<li>fastboot reboot——Fastboot模式下重启手机</li>
+</ul>
+<h2 id="擦除分区命令"><a href="#擦除分区命令" class="headerlink" title="擦除分区命令"></a>擦除分区命令</h2><p>擦除分区前需要按照之前步骤走一遍，擦除会将该分区恢复到使用前状态</p>
+<blockquote>
+<p>fastboot erase system</p>
+<p>fastboot erase boot</p>
+<p>…</p>
+</blockquote>
+<h2 id="一般线刷操作流程"><a href="#一般线刷操作流程" class="headerlink" title="一般线刷操作流程"></a>一般线刷操作流程</h2><ul>
+<li><p>准备工作</p>
+<p>  首先需要准备好刷机包，可以是自己编译的，也可以是从别处拷贝的，但一定要确保刷机包适用于你的 Android 设备。然后解压刷机包，解压后我们可以得到 boot.img、recovery.img、system.img、bootloader 文件，正是这些文件构成了 Android 设备的系统。</p>
+<p>  让设备进入 Fastboot 环境。有 2 种方法：</p>
+<pre><code>执行命令 adb  reboot  fastboot
+</code></pre><p>  或者</p>
+<pre><code>同时按住 增加音量 和 电源 键开机。具体看机型操作
+</code></pre></li>
+</ul>
+<ul>
+<li><p>命令执行流程</p>
+<p>  在设备进入到 Fastboot 环境后，根据需求执行下面的命令进行刷机：</p>
+<p>  仅供参考，具体看机型以及ROM进行相关操作，请严格按照ROM作者教程来</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">fastboot  flashing  unlock    设备解锁，开始刷机</span><br><span class="line"></span><br><span class="line"> fastboot  flash  boot  boot.img    刷入 boot 分区。如果修改了 kernel 代码，则应该刷入此分区以生效</span><br><span class="line"></span><br><span class="line"> fastboot  flash  recovery  recovery.img  刷入 recovery 分区</span><br><span class="line"></span><br><span class="line"> fastboot  flash  system  system.img    刷入 system 分区。如果修改的代码会影响 out/system/ 路径下生成的文件，则应该刷入此分区以生效</span><br><span class="line"></span><br><span class="line"> fastboot  flash  bootloader  bootloader     刷入 bootloader</span><br><span class="line"></span><br><span class="line"> fastboot  erase  frp   擦除 frp 分区，frp 即 Factory Reset Protection，用于防止用户信息在手机丢失后外泄</span><br><span class="line"></span><br><span class="line"> fastboot  flashing lock    设备上锁，刷机完毕（不是必须）</span><br><span class="line"></span><br><span class="line"> fastboot  continue    自动重启设备</span><br></pre></td></tr></table></figure>
+<h1 id="Fastboot-小秘密"><a href="#Fastboot-小秘密" class="headerlink" title="Fastboot 小秘密"></a>Fastboot 小秘密</h1><ul>
+<li><p>Fastboot多为各大厂商的售后刷机工具所用(不包括有些厂商锁9008和MTKCOM)</p>
+</li>
+<li><p>Fastboot一般用来救砖(指的是无法进入Recovery和系统的情况下)</p>
+</li>
+<li><p>有些具有bl锁的机子Fastboot可能无法刷入第三方镜像(img)</p>
+</li>
+<li><p>Fastboot能进去你的机子99%都可以救回来</p>
+</li>
+<li><p>Fastboot的权限仅次于9008/MTKCOM</p>
+</li>
+<li><p>Fastboot无第三方。只有厂商定制。因为快速引导这个东西第三方也搞不出什么花样。。不像Recovery这么多功能，他偏向于底层了。</p>
+</li>
+<li><p>个人认为Fastboot比卡刷更安全，更可靠，也比Recovery更稳定(有些Recovery驱动不完美会导致有时候无法使用触屏等功能)</p>
+</li>
+<li><p>Fastboot是个好东西</p>
+</li>
+<li><p>像奇兔，线刷宝大部分都是推送ROM到recovery中，用脚本进行卡刷。而不是用fastboot进行线刷。<strong><em>注意：是大部分</em></strong></p>
+</li>
+</ul>
+<h1 id="Fastboot总结"><a href="#Fastboot总结" class="headerlink" title="Fastboot总结"></a>Fastboot总结</h1><blockquote>
+<p>是比Recovery更靠谱的底层刷机模式</p>
+<p>比Recovery权限更高</p>
+<p>也可以调试用</p>
+</blockquote>
+<p><a href="http://patrickstar.vip/2019/04/10/浅谈fastboot/" target="_blank" rel="noopener">原文地址</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-04-10T14:21:21.126Z" itemprop="dateUpdated">2019-04-10 22:21:21</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://xuhe0903.xyz">
+            <img src="/img/avatar.jpg" alt="徐赫">
+            徐赫
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://xuhe0903.xyz/2019/04/10/浅谈Fastboot/&title=《浅谈Fastboot》 — 徐赫的博客&pic=http://xuhe0903.xyz/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://xuhe0903.xyz/2019/04/10/浅谈Fastboot/&title=《浅谈Fastboot》 — 徐赫的博客&source=记录网上生活的点点滴滴" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://xuhe0903.xyz/2019/04/10/浅谈Fastboot/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《浅谈Fastboot》 — 徐赫的博客&url=http://xuhe0903.xyz/2019/04/10/浅谈Fastboot/&via=http://xuhe0903.xyz" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://xuhe0903.xyz/2019/04/10/浅谈Fastboot/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/04/10/浅谈Recovery/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">浅谈Recovery</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/04/07/ncm转mp3小工具/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">ncm转mp3小工具</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        打赏
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>徐赫 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://xuhe0903.xyz/2019/04/10/浅谈Fastboot/&title=《浅谈Fastboot》 — 徐赫的博客&pic=http://xuhe0903.xyz/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://xuhe0903.xyz/2019/04/10/浅谈Fastboot/&title=《浅谈Fastboot》 — 徐赫的博客&source=记录网上生活的点点滴滴" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://xuhe0903.xyz/2019/04/10/浅谈Fastboot/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《浅谈Fastboot》 — 徐赫的博客&url=http://xuhe0903.xyz/2019/04/10/浅谈Fastboot/&via=http://xuhe0903.xyz" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://xuhe0903.xyz/2019/04/10/浅谈Fastboot/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://xuhe0903.xyz/2019/04/10/浅谈Fastboot/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

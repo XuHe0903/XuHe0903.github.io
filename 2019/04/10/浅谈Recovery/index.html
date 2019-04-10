@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>浅谈Recovery | 徐赫的博客 | 一个高中生的空中楼阁</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#2196F3">
+    
+    
+    <meta name="keywords" content="Android,IT">
+    <meta name="description" content="Recovery是什么 Recovery 是安卓的一种刷机模式，其实在linux中也存在这种模式。 俗称恢复模式Recovery 这种刷机模式的诞生主要的作用是不用连接电脑进行升级，刷机等操作。理论上来说当你手机进不去系统是可以进入Recovery下恢复手机。     简称为rec，很多小伙伴在学习刷机的过程中会看到这个词。 在安卓中，一般存在三种方式的刷机， Recovery  恢复模式 Fas">
+<meta name="keywords" content="Android,IT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈Recovery">
+<meta property="og:url" content="http://xuhe0903.xyz/2019/04/10/浅谈Recovery/index.html">
+<meta property="og:site_name" content="徐赫的博客">
+<meta property="og:description" content="Recovery是什么 Recovery 是安卓的一种刷机模式，其实在linux中也存在这种模式。 俗称恢复模式Recovery 这种刷机模式的诞生主要的作用是不用连接电脑进行升级，刷机等操作。理论上来说当你手机进不去系统是可以进入Recovery下恢复手机。     简称为rec，很多小伙伴在学习刷机的过程中会看到这个词。 在安卓中，一般存在三种方式的刷机， Recovery  恢复模式 Fas">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-10T14:25:47.729Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅谈Recovery">
+<meta name="twitter:description" content="Recovery是什么 Recovery 是安卓的一种刷机模式，其实在linux中也存在这种模式。 俗称恢复模式Recovery 这种刷机模式的诞生主要的作用是不用连接电脑进行升级，刷机等操作。理论上来说当你手机进不去系统是可以进入Recovery下恢复手机。     简称为rec，很多小伙伴在学习刷机的过程中会看到这个词。 在安卓中，一般存在三种方式的刷机， Recovery  恢复模式 Fas">
+    
+        <link rel="alternate" type="application/atom+xml" title="徐赫的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.jpg">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">徐赫</h5>
+          <a href="mailto:3081899312@qq.com" title="3081899312@qq.com" class="mail">3081899312@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/XuHe0903" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/6115152202" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info-circle"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">浅谈Recovery</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">浅谈Recovery</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-04-10T14:20:03.000Z" itemprop="datePublished" class="page-time">
+  2019-04-10
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/转载/">转载</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Recovery是什么"><span class="post-toc-number">1.</span> <span class="post-toc-text">Recovery是什么</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#官方Recovery的作用"><span class="post-toc-number">2.</span> <span class="post-toc-text">官方Recovery的作用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#第三方Recovery"><span class="post-toc-number">3.</span> <span class="post-toc-text">第三方Recovery</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Recovery的编译。后期会出Recovery的编译教程。以及移植教程"><span class="post-toc-number">4.</span> <span class="post-toc-text">Recovery的编译。后期会出Recovery的编译教程。以及移植教程</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Recovery怎么刷入"><span class="post-toc-number">5.</span> <span class="post-toc-text">Recovery怎么刷入</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-浅谈Recovery"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">浅谈Recovery</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-04-10 22:20:03" datetime="2019-04-10T14:20:03.000Z"  itemprop="datePublished">2019-04-10</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/转载/">转载</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Recovery是什么"><a href="#Recovery是什么" class="headerlink" title="Recovery是什么"></a>Recovery是什么</h1><blockquote>
+<p>Recovery 是安卓的一种刷机模式，其实在linux中也存在这种模式。 俗称恢复模式Recovery 这种刷机模式的诞生主要的作用是不用连接电脑进行升级，刷机等操作。理论上来说当你手机进不去系统是可以进入Recovery下恢复手机。  </p>
+</blockquote>
+<ul>
+<li>简称为rec，很多小伙伴在学习刷机的过程中会看到这个词。</li>
+<li>在安卓中，一般存在三种方式的刷机，<ul>
+<li>Recovery  恢复模式</li>
+<li>Fastboot  引导模式</li>
+<li>高通 9008或MTK COM  端口<blockquote>
+<p>从顺序上来说9008或MTKCOM是权限最大的，可以刷入Fastboot以及Recovery，系统<br>Fastboot可以刷入Recovery，以及系统<br>而Recovery可以刷入系统。以及各种卡刷包，补丁包  </p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="官方Recovery的作用"><a href="#官方Recovery的作用" class="headerlink" title="官方Recovery的作用"></a>官方Recovery的作用</h1><ul>
+<li>重置手机</li>
+<li>清楚数据及其缓存</li>
+<li>升级系统，卡刷官方升级包</li>
+<li>重启</li>
+</ul>
+<h1 id="第三方Recovery"><a href="#第三方Recovery" class="headerlink" title="第三方Recovery"></a>第三方Recovery</h1><blockquote>
+<p>首先我们需要了解Recovery是有官方以及第三方  </p>
+</blockquote>
+<blockquote>
+<p>官方的Recovery功能较少，限制也很多，而第三方功能丰富。  </p>
+</blockquote>
+<ul>
+<li>卡刷任何非官方卡刷包</li>
+<li>清除(格式化) dalvik/ART cache,system,data,storage,cache,usb-otg</li>
+<li>挂载任意一个分区</li>
+<li>adb 命令</li>
+<li>刷入img镜像文件</li>
+<li>备份现有系统或分区(仅限TWRP)</li>
+<li>还原备份</li>
+<li>TWRP高级功能，ADB sideload，File Manager</li>
+</ul>
+<blockquote>
+<p>第三方Recovery分为TWRP，CWM。  </p>
+</blockquote>
+<blockquote>
+<p>现在基本是TWRP，CWM是在4.x的时代的。  </p>
+</blockquote>
+<h1 id="Recovery的编译。后期会出Recovery的编译教程。以及移植教程"><a href="#Recovery的编译。后期会出Recovery的编译教程。以及移植教程" class="headerlink" title="Recovery的编译。后期会出Recovery的编译教程。以及移植教程"></a>Recovery的编译。后期会出Recovery的编译教程。以及移植教程</h1><h1 id="Recovery怎么刷入"><a href="#Recovery怎么刷入" class="headerlink" title="Recovery怎么刷入"></a>Recovery怎么刷入</h1><ul>
+<li>Fastboot中刷入</li>
+<li>9008或者MTK DAS刷入</li>
+<li>系统获取ROOT权限后使用一些软件刷入。</li>
+</ul>
+<blockquote>
+<p>有什么问题可以在评论区讨论。欢迎大神们来纠正错误。  </p>
+</blockquote>
+<p><a href="http://patrickstar.vip/2019/04/09/浅谈recovery/" target="_blank" rel="noopener">原文地址</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-04-10T14:25:47.729Z" itemprop="dateUpdated">2019-04-10 22:25:47</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://xuhe0903.xyz">
+            <img src="/img/avatar.jpg" alt="徐赫">
+            徐赫
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://xuhe0903.xyz/2019/04/10/浅谈Recovery/&title=《浅谈Recovery》 — 徐赫的博客&pic=http://xuhe0903.xyz/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://xuhe0903.xyz/2019/04/10/浅谈Recovery/&title=《浅谈Recovery》 — 徐赫的博客&source=记录网上生活的点点滴滴" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://xuhe0903.xyz/2019/04/10/浅谈Recovery/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《浅谈Recovery》 — 徐赫的博客&url=http://xuhe0903.xyz/2019/04/10/浅谈Recovery/&via=http://xuhe0903.xyz" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://xuhe0903.xyz/2019/04/10/浅谈Recovery/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/04/10/浅谈Fastboot/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">浅谈Fastboot</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        打赏
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>徐赫 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://xuhe0903.xyz/2019/04/10/浅谈Recovery/&title=《浅谈Recovery》 — 徐赫的博客&pic=http://xuhe0903.xyz/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://xuhe0903.xyz/2019/04/10/浅谈Recovery/&title=《浅谈Recovery》 — 徐赫的博客&source=记录网上生活的点点滴滴" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://xuhe0903.xyz/2019/04/10/浅谈Recovery/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《浅谈Recovery》 — 徐赫的博客&url=http://xuhe0903.xyz/2019/04/10/浅谈Recovery/&via=http://xuhe0903.xyz" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://xuhe0903.xyz/2019/04/10/浅谈Recovery/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://xuhe0903.xyz/2019/04/10/浅谈Recovery/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
